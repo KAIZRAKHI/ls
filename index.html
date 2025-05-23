@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Stories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lambency&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Lambency', 'serif'],
+                        'body-serif': ['Lambency', 'serif'],
+                        'package': ['Lambency', 'serif'],
+                    },
+                    colors: {
+                        'navy': '#2A2A4A',
+                        'cream': '#f7f3e6',
+                        'charcoal': '#2b2a29'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-charcoal">
+    <!-- Hero Section -->
+    <section class="relative h-screen overflow-hidden flex items-center">
+        <div class="absolute inset-0 bg-black/50 z-10"></div>
+        <!-- Carousel Images -->
+        <div id="hero-carousel" class="absolute inset-0">
+            <div class="carousel-image absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: url('ls4.jpg');"></div>
+            <div class="carousel-image absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('ls3.jpg');"></div>
+            <div class="carousel-image absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('ls2.jpg');"></div>
+        </div>
+        <!-- Navigation Bar -->
+        <nav class="absolute top-0 left-0 right-0 z-30 py-4 md:py-6 px-4 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 bg-black/50 md:bg-transparent">
+            <!-- Logo -->
+            <div>
+                <img src="./ls-logo.png" alt="Serene Vista Resort Logo" class="w-40 md:w-60 h-auto">
+            </div>
+            <!-- Nav Items -->
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-10 list-none p-0 m-0">
+                <li><a href="#" class="text-white text-base md:text-lg hover:text-gray-300 transition-colors">Home</a></li>
+                <li><a href="#services" class="text-white text-base md:text-lg hover:text-gray-300 transition-colors">Services</a></li>
+                <li><a href="#about" class="text-white text-base md:text-lg hover:text-gray-300 transition-colors">About</a></li>
+                <li><a href="#contact" class="text-white text-base md:text-lg hover:text-gray-300 transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="relative container mx-auto px-4 md:px-12 h-full flex flex-col justify-start z-20 text-white">
+            <!-- Hero Content -->
+            <div class="flex flex-col justify-center h-full mt-16 md:mt-32 max-w-xl">
+                <h1 class="font-serif text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl mb-2 md:mb-4 text-left">ESCAPE INTO MEMORIES</h1>
+                <p class="font-body-serif text-white italic text-base md:text-lg mb-4 md:mb-8 text-left">Authentic moments. Artfully captured.</p>
+                <button class="bg-white text-charcoal px-6 md:px-8 py-3 md:py-4 font-serif tracking-wider text-sm md:text-base uppercase shadow hover:bg-opacity-90 transition-colors text-left w-max">
+                    SCHEDULE YOUR SESSION NOW
+                </button>
+            </div>
+        </div>
+        <!-- Indicators -->
+        <div class="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3" id="carousel-indicators">
+        </div>
+    </section>
+   
+
+    <section class="relative w-full py-20 flex flex-col lg:flex-row items-start gap-16" style="background: url('./ls-bg.png') center center / cover no-repeat;">
+        <div class="w-full max-w-7xl mx-auto px-12 flex flex-col lg:flex-row items-start gap-16">
+            <!-- Left Column -->
+            <div class="lg:w-5/12 space-y-8" id="animated-heading">
+                <h1 class=" text-4xl md:text-5xl leading-tight tracking-wide" style="font-family: 'Californian FB', serif;">
+                      <span class="scroll-animate-word inline-block">FRAMES </span> FILLED<br>
+                    WITH  <span class="scroll-animate-word inline-block">LOVE,</span><br>
+                    CAPTURING <br>
+                    DEEP  <span class="scroll-animate-word inline-block">CONNECTIONS</span>
+                </h1>
+                <p class="font-body-serif text-gray-700 leading-relaxed">
+                    Capture life's most precious moments with our signature photography services. We specialize in creating timeless, emotional imagery that tells your unique story. Our thoughtfully crafted packages blend artistic vision, technical excellence, and personal connection.
+                </p>
+                <button class="bg-navy text-white px-8 py-4 font-serif tracking-wider hover:bg-opacity-90 transition-colors">
+                    SEE OUR SERVICES
+                </button>
+            </div>
+
+            <!-- Right Column - Services Grid -->
+            <div class="lg:w-7/12 space-y-4">
+                <!-- Wedding Photography -->
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <img src="ls-portrait.jpg" alt="Portrait Photography" class="w-full md:w-1/2 h-40 object-cover">
+                    <div class="md:w-1/2 space-y-2">
+                        <h3 class="font-serif text-xl service-heading">Portrait Photography</h3>
+                        <p class="font-body-serif text-gray-700 text-sm">Capturing the personality and essence of individuals or groups through studio or natural settings, including family photos and professional headshots.</p>
+                    </div>
+                </div>
+
+                <!-- Portrait Sessions -->
+                <div class="flex flex-col md:flex-row-reverse gap-4 items-center">
+                  <img src="ls-building.jpg" alt="Architectural Photography" class="w-full md:w-1/2 h-40 object-cover">
+                  <div class="md:w-1/2 space-y-2">
+                        <h3 class="font-serif text-xl service-heading">Architectural Photography</h3>
+                        <p class="font-body-serif text-gray-700 text-sm">Showcasing the beauty and design of buildings and structures, from historic landmarks to modern interiors and exteriors.</p>
+                    </div>
+                </div>
+
+                <!-- Nature Shoots -->
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                  <img src="ls-event.jpg" alt="Event Photography" class="w-full md:w-1/2 h-40 object-cover">
+                  <div class="md:w-1/2 space-y-2">
+                        <h3 class="font-serif text-xl service-heading">Event Photography</h3>
+                        <p class="font-body-serif text-gray-700 text-sm">Documenting memorable moments at special occasions like weddings, concerts, and corporate events with a candid and creative approach.</p>
+                    </div>
+                </div>
+
+                <!-- Private Edits -->
+                <div class="flex flex-col md:flex-row-reverse gap-4 items-center">
+                    <img src="ls-fashion.jpg" alt="Fashion Photography" class="w-full md:w-1/2 h-40 object-cover">
+                    <div class="md:w-1/2 space-y-2">
+                        <h3 class="font-serif text-xl service-heading">Fashion Photography</h3>
+                        <p class="font-body-serif text-gray-700 text-sm">Highlighting clothing and accessories in stylish settings, perfect for magazines, advertisements, and runway shows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome/About Section -->
+    <section class="relative h-screen flex items-center justify-center text-white">
+        <!-- Background with Blur -->
+        <div class="absolute inset-0 z-0" style="background-image: url('./ls1.jpg'); background-size: cover; background-position: center; filter: blur(3px);"></div>
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/50 z-10" style="top: 0; left: 0; right: 0; bottom: 0px;"></div>
+
+        <!-- Content -->
+        <div class="relative z-20 text-center max-w-4xl mx-auto px-4">
+            <h2 class=" text-4xl md:text-5xl mb-4" style="font-family: 'Californian FB', serif;">"Life Stories"</h2>
+            <p class="font-['Cormorant_Garamond'] italic text-xl md:text-2xl mb-8">We don't just take pictures — we tell stories.</p>
+            <p class="font-body-serif text-base md:text-lg leading-relaxed text-gray-200">
+At LifeStories, every photo is a memory crafted with intention, emotion, and detail.
+Whether it's a stolen glance, a joyful tear, or the beauty of everyday moments. we're here to frame it with timeless elegance.            </p>
+<p class="font-body-serif text-base md:text-lg leading-relaxed text-gray-200">From weddings and portraits to brand shoots and intimate events, our lens follows light, love, and life itself.</p>
+        </div>
+    </section>
+
+    <!-- highlight Section -->
+    <section id="about" class="bg-charcoal text-white py-20 px-12">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class=" text-4xl md:text-5xl text-center mb-12" style="font-family: 'Californian FB', serif;">WHY CHOOSE LIFE STORIES?</h2>
+            <div class="bg-[#3a3a3a] p-8 md:p-12 rounded-lg shadow-xl flex flex-col md:flex-row items-center gap-10">
+                <!-- Image -->
+                <div class="md:w-1/2">
+                    <img src="ls4.jpg" alt="" class="rounded-lg object-cover w-full h-64">
+                </div>
+                <!-- Highlights List -->
+                <div class="md:w-1/2">
+                    <ul class="list-disc list-inside space-y-4 font-body-serif text-gray-300">
+                        <li>Personalized photography sessions that reflect your unique story.</li>
+                        <li> Expertly captured candid and posed moments filled with emotion.</li>
+                        <li>Natural outdoor settings and handpicked locations for stunning backdrops.</li>
+                        <li>Premium editing to bring out true color, light, and mood in every frame.</li>
+                        <li>Heartfelt customer experience from booking to delivery.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Bottom Paragraph -->
+            <p class="font-body-serif text-gray-300 text-center mt-12 leading-relaxed">
+                Over 100 happy celebrations and counting — because your joy is our promise.            </p>
+        </div>
+    </section>
+
+
+    <style>
+    .scroll-animate-word {
+      color: inherit;
+      background-color: transparent; /* Default background */
+      background-image: linear-gradient(90deg, rgba(143, 35, 35, 0.947) 0%, rgb(143, 35, 35) 100%); /* Red gradient */
+      background-repeat: no-repeat;
+      background-size: 0% 100%; 
+      transition: background-size 0.7s cubic-bezier(0.4,0,0.2,1), color 0.8s;
+    }
+    .scroll-animate-word.animated {
+      background-size: 100% 100%; 
+      color: #fff; 
+    }
+
+    .carousel-indicator {
+        width: 10px;
+        height: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease, width 0.3s ease;
+    }
+
+    .carousel-indicator.active {
+        background-color: #fff;
+        width: 25px;
+        border-radius: 5px;
+    }
+    @media (min-width: 768px) {
+      body {
+        background-color: #f7f3e6; 
+        color: #2b2a29; 
+      }
+    }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const lines = document.querySelectorAll('.scroll-animate-word');
+        lines.forEach(line => {
+          line.classList.remove('animated');
+        });
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animated');
+            } else {
+              entry.target.classList.remove('animated');
+            }
+          });
+        }, { threshold: 0.5 });
+        lines.forEach(line => observer.observe(line));
+
+        // Hero Carousel Script
+        const carouselImages = document.querySelectorAll('.carousel-image');
+        let currentIndex = 0;
+        let intervalId; 
+
+        function showNextImage() {
+          carouselImages[currentIndex].classList.remove('opacity-100');
+          carouselImages[currentIndex].classList.add('opacity-0');
+          currentIndex = (currentIndex + 1) % carouselImages.length;
+          carouselImages[currentIndex].classList.remove('opacity-0');
+          carouselImages[currentIndex].classList.add('opacity-100');
+          updateIndicators(); 
+        }
+
+        function goToSlide(index) {
+          carouselImages[currentIndex].classList.remove('opacity-100');
+          carouselImages[currentIndex].classList.add('opacity-0');
+          currentIndex = index;
+          carouselImages[currentIndex].classList.remove('opacity-0');
+          carouselImages[currentIndex].classList.add('opacity-100');
+          updateIndicators();
+          resetInterval(); 
+        }
+
+        function resetInterval() {
+          clearInterval(intervalId);
+          intervalId = setInterval(showNextImage, 5000);
+        }
+
+        // Hero Carousel Indicators and Click Functionality
+        const indicatorsContainer = document.getElementById('carousel-indicators');
+
+        // Create indicators dynamically
+        carouselImages.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.classList.add('carousel-indicator');
+            if (index === 0) {
+                indicator.classList.add('active');
+            }
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            indicatorsContainer.appendChild(indicator);
+        });
+
+        const indicators = document.querySelectorAll('.carousel-indicator');
+
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        carouselImages[currentIndex].classList.add('opacity-100');
+        updateIndicators();
+        resetInterval(); 
+
+        const headingContainer = document.getElementById('animated-heading');
+        const words = headingContainer.querySelectorAll('.scroll-animate-word');
+
+        const headingObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate words with a delay
+                    words.forEach((word, index) => {
+                        setTimeout(() => {
+                            word.classList.add('animated');
+                        }, index * 35000); 
+                    });
+                } else {
+                    words.forEach(word => {
+                        word.classList.remove('animated');
+                    });
+                }
+            });
+        }, { threshold: 0.3 }); 
+
+        headingObserver.observe(headingContainer);
+      });
+    </script>
+</body>
+</html>
+<style>
+.service-heading {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.service-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 1px;
+    background-color: #2b2a29;
+}
+</style>
+</html>
