@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Life Stories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lambency&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Lambency', 'serif'],
+                        'body-serif': ['Lambency', 'serif'],
+                        'package': ['Lambency', 'serif'],
+                    },
+                    colors: {
+                        'navy': '#2A2A4A',
+                        'cream': '#f7f3e6',
+                        'charcoal': '#2b2a29'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: white;
+            color: var(--color-charcoal);
+        }
+
+
+        .story {
+            background: var(--color-beige);
+        }
+
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-text {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .story-image {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .story img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+ 
+        .vision {
+            background: linear-gradient(to right, white 50%, var(--color-blush) 50%);
+        }
+
+        .vision-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .vision-item {
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+
+
+    
+        .faq {
+            background: white;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1rem;
+            background: var(--color-beige);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1rem;
+            max-height: 200px;
+        }
+
+   
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+       
+        @media (max-width: 768px) {
+            .story-container,
+            .vision-container {
+                grid-template-columns: 1fr;
+            }
+
+            .vision {
+                background: var(--color-blush);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream text-charcoal">
+    <!-- Navigation Bar -->
+    <nav class="absolute top-0 left-0 right-0 z-30 py-4 md:py-6 px-4 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 bg-black/50 md:bg-transparent">
+        <!-- Logo -->
+        <div>
+            <img src="./ls-logo.png" alt="Life Stories Logo" class="w-40 md:w-60 h-auto">
+        </div>
+        <!-- Nav Items -->
+        <ul class="flex flex-wrap justify-center space-x-4 md:space-x-10 list-none p-0 m-0">
+            <li><a href="index.html" class="text-white text-base md:text-lg hover:text-gray-300 transition-colors">Home</a></li>
+            <li><a href="#services" class="text-white text-base md:text-lg hover:text-gray-300 transition-colors">Services</a></li>
+            <li><a href="#" class="text-white text-base md:text-lg hover:text-gray-300 transition-colors">About</a></li>
+            <li><a href="#contact" class="text-white text-base md:text-lg hover:text-gray-300 transition-colors">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero section">
+        <div class="hero-content">
+            <h1>Capturing Stories of Love & Life</h1>
+            <p>Timeless moments, beautifully framed.</p>
+            <a href="#" class="btn">View Our Work</a>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="relative py-24 overflow-hidden" style="background: url('ls-bg.png') center/cover;">
+        <div class="container mx-auto px-4 md:px-12">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2" data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl mb-6" style="font-family: 'Californian FB', serif;">Our Story</h2>
+                    <p class="font-body-serif text-gray-700 mb-8 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad esse laborum sequi incidunt ducimus similique velit quibusdam consequatur alias, possimus delectus animi labore ipsa aperiam.</p>
+                    <p class="font-body-serif text-gray-700 mb-8 leading-relaxed">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error at enim corporis molestias repellendus labore, iusto veniam exercitationem possimus assumenda architecto!/p>
+                </div>
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <img src="ls3.jpg" alt="Photographer at work" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="relative py-24 overflow-hidden bg-charcoal text-white" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80') center/cover fixed; backdrop-filter: blur(5px);">
+        <div class="container mx-auto px-4 md:px-12">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2 p-8 bg-black/50 backdrop-blur-sm rounded-lg" data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl mb-6" style="font-family: 'Californian FB', serif;">Our Vision</h2>
+                    <p class="font-body-serif text-gray-200 text-lg italic">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, earum.</p>
+                </div>
+                <div class="w-full md:w-1/2 p-8 bg-black/50 backdrop-blur-sm rounded-lg" data-aos="fade-left">
+                    <h2 class="text-4xl md:text-5xl mb-6" style="font-family: 'Californian FB', serif;">Our Mission</h2>
+                    <p class="font-body-serif text-gray-200 text-lg italic">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius, dolore!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="relative py-24 overflow-hidden bg-cream" style="background: linear-gradient(rgba(247, 243, 230, 0.9), rgba(247, 243, 230, 0.9)), url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80') center/cover fixed; backdrop-filter: blur(3px);">
+        <div class="container mx-auto px-4 md:px-12">
+            <h2 class="text-4xl md:text-5xl mb-12 text-center" style="font-family: 'Californian FB', serif;">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <div class="p-6 cursor-pointer">
+                        <h3 class="font-serif text-xl mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing.</h3>
+                        <p class="font-body-serif text-gray-700">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut explicabo sed veritatis, quaerat reprehenderit id.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <div class="p-6 cursor-pointer">
+                        <h3 class="font-serif text-xl mb-4">Lorem ipsum dolor sit amet consectetur.</h3>
+                        <p class="font-body-serif text-gray-700">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, perspiciatis totam! Est nesciunt quam inventore.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <div class="p-6 cursor-pointer">
+                        <h3 class="font-serif text-xl mb-4">Lorem, ipsum dolor.</h3>
+                        <p class="font-body-serif text-gray-700">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-charcoal text-white pt-20 pb-10">
+        <div class="container mx-auto px-4 md:px-12">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <!-- Company Info -->
+                <div class="space-y-6">
+                    <img src="./ls-logo.png" alt="Life Stories Logo" class="w-40 h-auto">
+                    <p class="text-gray-300 font-body-serif leading-relaxed">
+                        Capturing life's most precious moments with artistic vision and technical excellence.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white hover:text-navy transition-all duration-300 transform hover:scale-110">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white hover:text-navy transition-all duration-300 transform hover:scale-110">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white hover:text-navy transition-all duration-300 transform hover:scale-110">
+                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="md:col-span-1">
+                    <h3 class="font-serif text-xl mb-6">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="md:col-span-1">
+                    <h3 class="font-serif text-xl mb-6">Our Services</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Wedding Photography</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Portrait Sessions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Event Coverage</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Commercial Shoots</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Photo Editing</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-white/10">
+                <div class="text-center">
+                    <p class="text-gray-400 text-sm">© 2025 Life Stories. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                }
+            });
+        });
+
+        document.querySelectorAll('.story-text, .story-image, .vision-item').forEach((el) => observer.observe(el));
+
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
