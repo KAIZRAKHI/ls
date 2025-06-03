@@ -82,9 +82,10 @@
                     <p class="font-body-serif text-gray-200 mb-8 leading-relaxed">
                         At Life Stories, we believe that every moment tells a unique tale. Our passion lies in transforming fleeting instances into timeless memories through the art of photography. With years of experience and an eye for detail, we've mastered the craft of capturing emotions, connections, and the subtle beauty that makes each story special.
                     </p>
+                    <a href="about.html">
                     <button class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-serif tracking-wider transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                         READ MORE
-                    </button>
+                    </button> </a>
                 </div>
 
                 <!-- Right Column -->
@@ -302,6 +303,23 @@ Whether it's a stolen glance, a joyful tear, or the beauty of everyday moments. 
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Portfolio Section (Bride's Odyssey Carousel) -->
+    <section id="portfolio" class="relative w-full py-16 bg-[#fafafa] flex justify-center items-center">
+      <!-- Left Arrow -->
+      <button id="portfolio-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow w-14 h-14 flex items-center justify-center text-2xl text-gray-400 hover:bg-gray-100 transition-all">
+        <span>&#x2039;</span>
+      </button>
+
+      <div id="portfolio-carousel" class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-stretch justify-center gap-8 px-4">
+        <!-- Content will be injected by JS -->
+      </div>
+
+      <!-- Right Arrow -->
+      <button id="portfolio-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow w-14 h-14 flex items-center justify-center text-2xl text-gray-400 hover:bg-gray-100 transition-all">
+        <span>&#x203A;</span>
+      </button>
     </section>
 
     <!-- Contact Section -->
@@ -812,6 +830,137 @@ Whether it's a stolen glance, a joyful tear, or the beauty of everyday moments. 
 
 
         });
+    });
+
+    // Portfolio Carousel Data
+    const portfolioSlides = [
+      {
+        left: {
+          img: 'ls4.jpg',
+          name: 'YUNA & KIRAN',
+          dest: 'Destination : Chennai',
+        },
+        center: {
+          img: 'ls3.jpg',
+          name: 'KALAYANI & ANZIL',
+          dest: 'Destination : Kochi',
+        },
+        right: {
+          img: 'ls2.jpg',
+          name: 'PRIYANKA & VIVEK',
+          dest: 'Destination : Ramada Resort Kochi',
+        },
+        bigText: `Forever <br>Together`,
+        quote: `"Your photography is a record of your living, for anyone who really sees."<br><span class='not-italic'>– Paul Strand</span>`
+      },
+      {
+        left: {
+          img: 'ls3.jpg',
+          name: 'DISHA & RONAK',
+          dest: 'Destination : Bangalore',
+        },
+        center: {
+          img: 'ls2.jpg',
+          name: 'GARI & GURU',
+          dest: 'Destination : Chennai',
+        },
+        right: {
+          img: 'ls1.jpg',
+          name: 'SHERLIN & LINAKAR',
+          dest: 'Destination : Fort kochi',
+        },
+        bigText: `Connected <br>Souls`,
+        quote: `"Photography is the story I fail to put into words."<br><span class='not-italic'>– Destin Sparks</span>`
+      }
+    ];
+
+    let portfolioIndex = 0;
+    let portfolioInterval;
+
+    function renderPortfolioSlide(idx) {
+      const slide = portfolioSlides[idx];
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        document.getElementById('portfolio-carousel').innerHTML = `
+          <div class=\"flex flex-col items-center justify-between w-full max-w-md mx-auto\">
+            <div class=\"bg-cream shadow-lg flex flex-col items-center p-6 w-full mb-4\">
+              <img src=\"${slide.center.img}\" alt=\"${slide.center.name}\" class=\"w-full h-56 object-cover mb-4\" />
+              <div class=\"text-center mt-auto\">
+                <h3 class=\"font-serif text-lg md:text-xl font-semibold mb-1\">${slide.center.name}</h3>
+                <p class=\"italic text-gray-500 text-sm\">${slide.center.dest}</p>
+              </div>
+            </div>
+            <div class=\"flex flex-col items-center justify-center flex-1\">
+              <h2 class=\"font-['Playfair_Display'] text-3xl md:text-5xl lg:text-6xl text-gray-400 text-center leading-none tracking-tight mb-2\" style=\"font-family: 'Playfair Display', serif;\">${slide.bigText}</h2>
+            </div>
+            <div class=\"mt-4 text-center w-full\">
+              <p class=\"text-gray-400 text-sm md:text-base italic\">${slide.quote}</p>
+            </div>
+          </div>
+        `;
+      } else {
+        document.getElementById('portfolio-carousel').innerHTML = `
+          <!-- Left Card -->
+          <div class=\"bg-cream  shadow-lg flex flex-col items-center p-6 w-full max-w-md\">
+            <img src=\"${slide.left.img}\" alt=\"${slide.left.name}\" class=\"w-full h-72 object-cover  mb-4\" />
+            <div class=\"text-center mt-auto\">
+              <h3 class=\"font-serif text-lg md:text-xl font-semibold mb-1\">${slide.left.name}</h3>
+              <p class=\"italic text-gray-500 text-sm\">${slide.left.dest}</p>
+            </div>
+          </div>
+          <!-- Center Card (with text overlay) -->
+          <div class=\"flex flex-col items-center justify-between w-full max-w-md\">
+            <div class=\"bg-cream  shadow-lg flex flex-col items-center p-6 w-full mb-4\">
+              <img src=\"${slide.center.img}\" alt=\"${slide.center.name}\" class=\"w-full h-56 object-cover mb-4\" />
+              <div class=\"text-center mt-auto\">
+                <h3 class=\"font-serif text-lg md:text-xl font-semibold mb-1\">${slide.center.name}</h3>
+                <p class=\"italic text-gray-500 text-sm\">${slide.center.dest}</p>
+              </div>
+            </div>
+            <div class=\"flex flex-col items-center justify-center flex-1\">
+              <h2 class=\"font-['Playfair_Display'] text-4xl md:text-5xl lg:text-6xl text-gray-400 text-center leading-none tracking-tight mb-2\" style=\"font-family: 'Playfair Display', serif;\">${slide.bigText}</h2>
+            </div>
+            <div class=\"mt-4 text-center w-full\">
+              <p class=\"text-gray-400 text-sm md:text-base italic\">${slide.quote}</p>
+            </div>
+          </div>
+          <!-- Right Card -->
+          <div class=\"bg-cream  shadow-lg flex flex-col items-center p-6 w-full max-w-md\">
+            <img src=\"${slide.right.img}\" alt=\"${slide.right.name}\" class=\"w-full h-72 object-cover mb-4\" />
+            <div class=\"text-center mt-auto\">
+              <h3 class=\"font-serif text-lg md:text-xl font-semibold mb-1\">${slide.right.name}</h3>
+              <p class=\"italic text-gray-500 text-sm\">${slide.right.dest}</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function startPortfolioAutoSwitch() {
+      if (portfolioInterval) clearInterval(portfolioInterval);
+      portfolioInterval = setInterval(() => {
+        portfolioIndex = (portfolioIndex + 1) % portfolioSlides.length;
+        renderPortfolioSlide(portfolioIndex);
+      }, 10000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      renderPortfolioSlide(portfolioIndex);
+      startPortfolioAutoSwitch();
+      document.getElementById('portfolio-prev').addEventListener('click', function() {
+        portfolioIndex = (portfolioIndex - 1 + portfolioSlides.length) % portfolioSlides.length;
+        renderPortfolioSlide(portfolioIndex);
+        startPortfolioAutoSwitch();
+      });
+      document.getElementById('portfolio-next').addEventListener('click', function() {
+        portfolioIndex = (portfolioIndex + 1) % portfolioSlides.length;
+        renderPortfolioSlide(portfolioIndex);
+        startPortfolioAutoSwitch();
+      });
+    });
+
+    window.addEventListener('resize', function() {
+      renderPortfolioSlide(portfolioIndex);
     });
     </script>
 </body>
